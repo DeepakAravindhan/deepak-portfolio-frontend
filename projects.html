@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the project portfolio of Deepak Aravindhan. Detailed case studies on full-stack web applications built with Python, Django, and more.">
+    <title>Projects | Deepak Aravindhan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ensures the footer stays at the bottom on short pages */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+        .project-card-large {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card-large:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Header (Consistent with other pages) -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Link back to index.html -->
+                <a href="index.html" class="text-2xl font-bold text-primary-600 dark:text-primary-400">Deepak Aravindhan</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#home" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+
+                    <a href="index.html#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                    <a href="index.html#skills" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+                    <!-- Highlight the current page -->
+                    <a href="projects.html" class="text-primary-600 dark:text-primary-400 font-semibold transition-colors">Projects</a>
+                    <a href="contact.html" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+                    
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="md:hidden p-2" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="index.html#home" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+
+                <a href="index.html#about" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="index.html#skills" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+                <a href="projects.html" class="block py-2 text-primary-600 dark:text-primary-400 font-semibold transition-colors">Projects</a>
+                <a href="contact.html" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bg-white dark:bg-gray-800 py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold">
+                    My <span class="text-primary-600 dark:text-primary-400">Projects</span>
+                </h1>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Here's a selection of my work. Each project was an opportunity to solve unique problems and deliver high-quality, scalable solutions.
+                </p>
+            </div>
+
+            <!-- Project Showcase Grid -->
+            <div class="space-y-20">
+
+                <!-- Project 1: E-Commerce Platform -->
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl font-bold mb-4">E-Commerce Platform</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            This full-stack e-commerce website for car sales demonstrates a complete end-to-end user experience. I developed a secure Django backend to manage inventory, users, and orders, connected to a MySQL database for data persistence. The front-end features dynamic product filtering, a multi-step checkout process, and a comprehensive user authentication system. A key challenge was designing a scalable database schema to handle various car models and specifications.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Django</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://www.sevenstars.qa/" target="_blank" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="ecommerce.png" alt="E-Commerce Platform Screenshot" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Project 2: Job Portal Website -->
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+                    <div>
+                        <img src="jobportal.png" alt="Job Portal Website Screenshot" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Job Portal Website</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            I architected this Django-based job portal to connect job seekers with employers. The platform includes distinct user roles (candidate, recruiter, admin), secure authentication, and a powerful admin panel for managing job listings and user accounts. A notable feature is the integration of a course purchasing system, allowing users to buy educational content to enhance their skills. The project emphasized clean code, modular design, and robust security practices.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Django</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">User Authentication</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Admin Panel</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Payment Integration</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Language Translator App -->
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl font-bold mb-4">Language Translator App</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            To explore desktop application development, I built this language translator using Python's native Tkinter library for the graphical user interface. The application integrates with a third-party translation API to provide fast and accurate real-time translations between dozens of languages. The focus was on creating a clean, intuitive, and responsive user interface that delivers a seamless user experience without the need for a web browser.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Tkinter (GUI)</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">REST API</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Abstract data visualization" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+
+                 <!-- Project 4: Business Website -->
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+    <div>
+        <img src="security.png" alt="Screenshot of the Security Guard Business Website" class="rounded-lg shadow-2xl w-full h-auto">
+    </div>
+    <div>
+        <h2 class="text-3xl font-bold mb-4">Security Services Business Website</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Developed a professional business website for a UK-based security services client. The project features a dynamic and responsive front-end built with React, providing a seamless user experience. The robust back-end is powered by Django, managing client inquiries, service scheduling, and content. A key feature is the interactive map integration, allowing potential customers to view service coverage areas and request guards for specific locations throughout the UK.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-6">
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">React</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Django</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">REST API</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Map Integration</span>
+        </div>
+        <div class="flex space-x-4">
+            <a href="https://www.indiguardsecurity.co.uk/" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+            </a>
+            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                <i class="fab fa-github mr-2"></i> View Code
+            </a>
+        </div>
+    </div>
+</div>
+
+
+                   <!-- Project 5: Car Website -->
+ 
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl font-bold mb-4">Car Website</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+This full-stack car website provides a smooth and informative experience for users interested in exploring car prices and booking car services. I developed a secure Django backend to manage car listings, pricing details, and service information, integrated with a MySQL database for reliable data storage. The front-end features dynamic filtering options that allow users to easily browse cars by brand, model, and price range, along with detailed sections showcasing available maintenance and repair services. A key challenge was creating a scalable database schema to efficiently handle a wide variety of car models, price structures, and service categories.                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Html&Css</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://car-factory.vercel.app/" target="_blank" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="car.png" alt="E-Commerce Platform Screenshot" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Call to Action Section -->
+            <div class="text-center mt-24 bg-gray-500 dark:bg-gray-800 py-16 rounded-2xl">
+                <h2 class="text-3xl font-bold">Have a project in mind?</h2>
+                <p class="mt-3 text-lg text-gray-600 dark:text-gray-300">Let's connect and build something incredible together.</p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="contact.html" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        Contact Me
+                    </a>
+                    
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with other pages) -->
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-white">Deepak Aravindhan</a>
+                    <p class="mt-2 text-gray-400">Python Full Stack Developer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/deepak-aravindhan-v-9aa963213" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <!-- <a href="https://github.com/DeepakAravindhan" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a> -->
+                    <a href="https://www.instagram.com/d_e_e_p_a_k__0024" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Deepak Aravindhan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

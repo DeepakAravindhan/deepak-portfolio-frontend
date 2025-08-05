@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_self">
+    <title>Deepak Aravindhan | Python Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    mono: ['Fira Code', 'monospace'],
+                },
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-reverse': 'float-reverse 5s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'float-reverse': {
+                            '0%, 100%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .skill-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .photo-frame {
+            position: relative;
+            z-index: 1;
+        }
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(14, 165, 233, 0.3);
+            border-radius: 16px;
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        .photo-frame:hover::before {
+            top: 10px;
+            left: 10px;
+        }
+        .soft-skill-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,249,255,0.9) 100%);
+        }
+        .dark .soft-skill-card {
+            background: linear-gradient(135deg, rgba(31,41,55,0.9) 0%, rgba(17,24,39,0.9) 100%);
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #0ea5e9 !important;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e0f2fe;
+        }
+        .dark .progress-bar {
+            background: #1e3a8a;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: #0ea5e9;
+            transition: width 1s ease-out;
+        }
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            background: rgba(14, 165, 233, 0.1);
+            border-left: 3px solid #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 font-sans">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors" onclick="handleNavClick(event, 'home')">Deepak Aravindhan</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'home')">Home</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'about')">About</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'skills')">Skills</a>
+                    <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'projects')">Projects</a>
+                    <a href="contact.html" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" >Contact</a>
+                  
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="md:hidden p-2" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">                
+                <a href="#" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'home')">Home</a>
+
+                <a href="#" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'about')">About</a>
+                <a href="#" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'skills')">Skills</a>
+                <a href="#" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'projects')">Projects</a>
+                <a href="contact.html" class="block py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+               
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-blue-50 to-primary-100 dark:from-gray-900 dark:to-primary-900/30">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-fade-in">
+                    <div class="inline-block bg-primary-100 dark:bg-primary-900/30 px-4 py-2 rounded-full mb-4">
+                        <p class="text-sm font-medium text-primary-600 dark:text-primary-400">Python Full Stack Developer</p>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                        Hi, I'm <span class="text-primary-600 dark:text-primary-400">Deepak</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300">
+                        I Build <span class="font-semibold">Scalable Solutions</span> With Django
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-lg">
+                        Turning complex problems into elegant, production-ready web applications with Python and modern frameworks.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="projects.html" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center hover-scale">
+                            View My Work <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="contact.html" class="border border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-gray-800 px-6 py-3 rounded-lg font-medium transition-colors flex items-center hover-scale">
+                            Contact Me <i class="fas fa-paper-plane ml-2"></i>
+                        </a>
+                    </div>
+                
+                </div>
+                <div class="animate-fade-in delay-100 hidden md:block">
+    <div class="relative w-full h-96 flex items-center justify-center">
+        
+        <div class="relative animate-float-reverse">
+            <div class="w-80 h-80 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-xl overflow-hidden">
+                <img src="Deepak_Photo.png" alt="Deepak Aravindhan" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in">
+                    About <span class="text-primary-600 dark:text-primary-400">Me</span>
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- Image Column -->
+    <div class="animate-fade-in delay-100 flex justify-center">
+        <div class="photo-frame w-64 h-64 md:w-80 md:h-80 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <img src="me.jpeg" 
+                 alt="Deepak Aravindhan" 
+                 class="w-full h-full object-cover">
+        </div>
+    </div>
+
+    <!-- Text Content Column -->
+    <div class="animate-fade-in delay-200">
+        <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105">
+            <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                I'm Deepak Aravindhan, a passionate Python Full Stack Developer with an M.Sc. in Mathematics. My unique academic background gives me an analytical edge in solving complex technical challenges.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                With hands-on experience in building real-world, scalable web applications, I specialize in creating smart solutions that bridge the gap between theoretical concepts and practical implementation.
+            </p>
+
+            <!-- Responsive Code Block -->
+            <div class="mt-6">
+                <pre class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto font-mono text-sm text-left"><code class="language-python"><span class="text-gray-500"># My Development Approach</span>
+<span class="text-blue-500">while</span> problem:
+    solution = <span class="text-green-500">analyze</span>(problem)
+    <span class="text-green-500">build</span>(scalable_solution)
+    <span class="text-green-500">optimize</span>(performance)</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Soft Skills Section -->
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="soft-skill-card p-6 rounded-xl shadow-md hover-scale animate-fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="h-12 w-12 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Team Player</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Collaborative by nature, I thrive in team environments where diverse perspectives lead to innovative solutions.
+                        </p>
+                    </div>
+                    <div class="soft-skill-card p-6 rounded-xl shadow-md hover-scale animate-fade-in delay-100">
+                        <div class="flex items-center mb-4">
+                            <div class="h-12 w-12 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-comments text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Effective Communicator</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            I bridge the gap between technical and non-technical stakeholders with clear, concise communication.
+                        </p>
+                    </div>
+                    <div class="soft-skill-card p-6 rounded-xl shadow-md hover-scale animate-fade-in delay-200">
+                        <div class="flex items-center mb-4">
+                            <div class="h-12 w-12 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-flag text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Problem Solver</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            I love turning complex problems into clean, functional web solutions that make users' lives easier.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in">
+                    My <span class="text-primary-600 dark:text-primary-400">Skills</span>
+                </h2>
+                
+                <!-- Skill Progress Bars -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="animate-fade-in">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Python</span>
+                            <span class="text-primary-600 dark:text-primary-400">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="animate-fade-in delay-100">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Django</span>
+                            <span class="text-primary-600 dark:text-primary-400">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="animate-fade-in delay-200">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">JavaScript</span>
+                            <span class="text-primary-600 dark:text-primary-400">65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="animate-fade-in delay-300">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">HTML/CSS</span>
+                            <span class="text-primary-600 dark:text-primary-400">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill Icons Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fab fa-python text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Python</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-100">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fab fa-js-square text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">JavaScript</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Intermediate</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-200">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fab fa-html5 text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">HTML5</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-300">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fab fa-css3-alt text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">CSS3</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fas fa-database text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Django</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Intermediate</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-100">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fas fa-server text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">MySQL</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Intermediate</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-200">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fas fa-calculator text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Mathematics</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">M.Sc. Level</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md skill-pill transition-all duration-300 animate-fade-in delay-300">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="h-12 w-12 text-primary-600 dark:text-primary-400 mb-3">
+                                <i class="fas fa-project-diagram text-4xl"></i>
+                            </div>
+                            <h3 class="font-semibold">Problem Solving</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Advanced</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in">
+            My <span class="text-primary-600 dark:text-primary-400">Projects</span>
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover-scale transition-all duration-300 animate-fade-in">
+                <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Language Translator App" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <i class="fas fa-language text-6xl text-white"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Language Translator App</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        A Python-Tkinter based desktop tool that translates languages in real-time — fast, reliable, and user-friendly.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Python</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Tkinter</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Translation API</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="request_code.html" class="text-primary-600 dark:text-primary-400 font-medium hover:underline flex items-center">
+                            View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover-scale transition-all duration-300 animate-fade-in delay-100">
+                <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 relative overflow-hidden">
+                    <img src="jobportal.png" 
+                         alt="Job Portal Website" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-6xl text-white"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Job Portal Website</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Developed a Django-based portal with job listings, user authentication, admin panel, and course purchase integration.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Django</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Authentication</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Payment Integration</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="request_code.html"  class="text-primary-600 dark:text-primary-400 font-medium hover:underline flex items-center">
+                             View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 - Blog Card -->
+            <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover-scale transition-all duration-300 animate-fade-in delay-200">
+                <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Technical Articles" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <i class="fas fa-book-open text-6xl text-white"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Technical Articles</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Explore my writings on Django optimization, Python patterns, and full-stack development best practices.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Django</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Python</span>
+                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Web Dev</span>
+                    </div>
+                    <div class="text-primary-600 dark:text-primary-400 font-medium">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Projects Button -->
+        <div class="text-center mt-12 animate-fade-in">
+            <a href="projects.html" class="inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors hover-scale">
+                View All Projects <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+        <!-- Certifications Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in">
+                    My <span class="text-primary-600 dark:text-primary-400">Certifications</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Certification 1 -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover-scale animate-fade-in">
+                        <div class="h-48 bg-gray-100 dark:bg-gray-600 relative overflow-hidden">
+                            <img src="Front_End_Development_HTML.png" 
+                                 alt="Front End Development Certification" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                <i class="fas fa-certificate text-5xl text-white opacity-80"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="h-10 w-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Front End Development -HTML</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Comprehensive certification covering Html fundamentals, tags.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certification 2 -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover-scale animate-fade-in delay-100">
+                        <div class="h-48 bg-gray-100 dark:bg-gray-600 relative overflow-hidden">
+                            <img src="Python_Fullstack_Development.png" 
+                                 alt="Full Stack Web Development Certification" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                <i class="fas fa-certificate text-5xl text-white opacity-80"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="h-10 w-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Python FullStack Development</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Certification in Python,Django and MySQL for building complete web applications.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Certification 3 -->
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden hover-scale animate-fade-in delay-200">
+                        <div class="h-48 bg-gray-100 dark:bg-gray-600 relative overflow-hidden">
+                            <img src="Front_End_Development_CSS.png" 
+                                 alt="Front End Development -Css Certification" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                <i class="fas fa-certificate text-5xl text-white opacity-80"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="h-10 w-10 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-certificate text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Front End Development -CSS</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Comprehensive certification covering Css fundamentals, styles and mobile friendly media queries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-16 bg-gray-100 dark:bg-gray-800 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Build Something Amazing?</h2>
+        
+        <p class="text-xl mb-8 text-gray-600 dark:text-primary-200 max-w-2xl mx-auto">Let's discuss how I can help bring your project to life with clean, efficient code.</p>
+        
+        <a href="contact.html" 
+           class="inline-block px-8 py-3 rounded-lg font-bold mt-4 transition-colors duration-300 transform hover:scale-105
+                  bg-white text-primary-600 hover:bg-primary-50
+                  dark:bg-primary-600 dark:text-white dark:hover:bg-primary-700">
+           Get In Touch
+        </a>
+    </div>
+</section>
+
+        
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white hover:text-primary-400 transition-colors" onclick="handleNavClick(event, 'home')">Deepak Aravindhan</a>
+                    <p class="mt-2">Turning Code into Real-World Solutions</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/deepak-aravindhan-v-9aa963213" class="text-gray-400 hover:text-white transition-colors social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <!-- <a href="https://github.com/DeepakAravindhan" class="text-gray-400 hover:text-white transition-colors social-icon" aria-label="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a> -->
+                    <a href="https://www.instagram.com/d_e_e_p_a_k__0024" class="text-gray-400 hover:text-white transition-colors social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Deepak Aravindhan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use system preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation
+        function handleNavClick(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Animate progress bars when they come into view
+        const progressBars = document.querySelectorAll('.progress-fill');
+        const animateProgressBars = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 100);
+                }
+            });
+        };
+
+        const progressObserver = new IntersectionObserver(animateProgressBars, {
+            threshold: 0.5
+        });
+
+        progressBars.forEach(bar => {
+            progressObserver.observe(bar.parentElement);
+        });
+
+        // Add animation classes when elements come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('[class*="animate-"]').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
