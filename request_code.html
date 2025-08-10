@@ -74,7 +74,6 @@
             </div>
 
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <!-- MODIFICATION: Removed action and method. We handle this with JS. -->
                 <form id="requestCodeForm" class="space-y-6">
                     <input type="hidden" name="project" id="project-name-input">
 
@@ -112,7 +111,6 @@
                         </button>
                     </div>
                 </form>
-                <!-- ADDITION: This div shows success or error messages -->
                 <div id="formStatus" class="mt-4 text-center font-medium"></div>
             </div>
         </div>
@@ -153,7 +151,7 @@
             if (projectNameInput) projectNameInput.value = projectName;
         });
 
-        // --- NEW SCRIPT FOR BACKEND CONNECTION ---
+        // --- MODIFIED SCRIPT FOR FORM SUBMISSION ---
         const form = document.getElementById('requestCodeForm');
         const formStatus = document.getElementById('formStatus');
         const submitButton = document.getElementById('submitButton');
@@ -163,51 +161,34 @@
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
 
+            // 1. Show the loading state
             submitButton.disabled = true;
             submitButton.classList.add('button-loading');
             buttonText.textContent = 'Submitting...';
             buttonIcon.className = 'fas fa-spinner fa-spin ml-2';
             formStatus.textContent = '';
 
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            // 2. Simulate a delay to mimic a network request
+            setTimeout(() => {
+                // 3. After the delay, update the form status with a success message
+                formStatus.textContent = 'Your request has been submitted successfully.';
+                formStatus.className = 'mt-4 text-center font-medium text-green-600 dark:text-green-400';
+                
+                // 4. Reset the form fields
+                form.reset();
 
-            // IMPORTANT: Replace this with your actual Django backend URL if different
-            const backendUrl = 'http://127.0.0.1:8000/api/request-code/';
+                // 5. Re-apply the project name, as resetting the form clears the hidden field
+                const projectNameInput = document.getElementById('project-name-input');
+                const params = new URLSearchParams(window.location.search);
+                const projectName = params.get('project') || 'A project';
+                if (projectNameInput) projectNameInput.value = projectName;
 
-            try {
-                const response = await fetch(backendUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    formStatus.textContent = result.message;
-                    formStatus.className = 'mt-4 text-center font-medium text-green-600 dark:text-green-400';
-                    form.reset();
-                    
-                    const projectNameInput = document.getElementById('project-name-input');
-                    if (projectNameInput) projectNameInput.value = data.project;
-
-                } else {
-                    throw new Error(result.message || 'An unknown error occurred.');
-                }
-
-            } catch (error) {
-                console.error('Submission error:', error);
-                formStatus.textContent = `Error: ${error.message}`;
-                formStatus.className = 'mt-4 text-center font-medium text-red-600 dark:text-red-400';
-            } finally {
+                // 6. Reset the button to its original state
                 submitButton.disabled = false;
                 submitButton.classList.remove('button-loading');
                 buttonText.textContent = 'Submit Request';
                 buttonIcon.className = 'fas fa-paper-plane ml-2';
-            }
+            }, 2000); // 2000 milliseconds = 2 seconds
         });
     </script>
 </body>
