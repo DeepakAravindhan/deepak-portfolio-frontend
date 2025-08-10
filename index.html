@@ -414,33 +414,32 @@
             My <span class="text-primary-600 dark:text-primary-400">Projects</span>
         </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
-            <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover-scale transition-all duration-300 animate-fade-in">
-                <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="Language Translator App" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-                        <i class="fas fa-language text-6xl text-white"></i>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Language Translator App</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        A Python-Tkinter based desktop tool that translates languages in real-time — fast, reliable, and user-friendly.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Python</span>
-                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Tkinter</span>
-                        <span class="bg-gray-200 dark:bg-gray-600 px-3 py-1 rounded-full text-xs font-medium">Translation API</span>
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="request_code.html" class="text-primary-600 dark:text-primary-400 font-medium hover:underline flex items-center">
-                            View Code
-                        </a>
-                    </div>
-                </div>
-            </div>
+              <!-- Project 4: Business Website -->
+                <div class="grid md:grid-cols-2 gap-12 items-center project-card-large bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl">
+    <div>
+        <img src="security.png" alt="Screenshot of the Security Guard Business Website" class="rounded-lg shadow-2xl w-full h-auto">
+    </div>
+    <div>
+        <h2 class="text-3xl font-bold mb-4">Security Services Business Website</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Developed a professional business website for a UK-based security services client. The project features a dynamic and responsive front-end built with React, providing a seamless user experience. The robust back-end is powered by Django, managing client inquiries, service scheduling, and content. A key feature is the interactive map integration, allowing potential customers to view service coverage areas and request guards for specific locations throughout the UK.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-6">
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">React</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Django</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">REST API</span>
+            <span class="bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium">Map Integration</span>
+        </div>
+        <div class="flex space-x-4">
+            <a href="https://www.indiguardsecurity.co.uk/" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+            </a>
+            <a href="request_code.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 px-5 py-2.5 rounded-lg font-medium transition-colors flex items-center">
+                <i class="fab fa-github mr-2"></i> View Code
+            </a>
+        </div>
+    </div>
+</div>
 
             <!-- Project 2 -->
             <div class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover-scale transition-all duration-300 animate-fade-in delay-100">
@@ -706,4 +705,5 @@
         });
     </script>
 </body>
+
 </html>
