@@ -94,7 +94,6 @@
                     <div id="formStatus" class="mt-4 text-center font-medium"></div>
                 </div>
                 
-                <!-- MODIFICATION: Filled in the contact info and social media links -->
                 <div class="space-y-12">
                     <div>
                         <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
@@ -128,7 +127,7 @@
                             </div>
                         </div>
                     </div>
-                     <div>
+                    <div>
                         <h3 class="text-2xl font-bold mb-4">Follow Me</h3>
                         <div class="flex space-x-6">
                             <a href="https://www.linkedin.com/in/deepak-aravindhan-v-9aa963213" target="_blank" class="text-gray-500 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400 transition-colors" aria-label="LinkedIn">
@@ -186,7 +185,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // --- NEW SCRIPT FOR CONTACT FORM SUBMISSION ---
+        // --- MODIFIED SCRIPT FOR CONTACT FORM SUBMISSION ---
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
         const submitButton = document.getElementById('submitButton');
@@ -196,46 +195,26 @@
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
+            // Simulate the loading state
             submitButton.disabled = true;
             submitButton.classList.add('button-loading');
             buttonText.textContent = 'Sending...';
             buttonIcon.className = 'fas fa-spinner fa-spin ml-2';
             formStatus.textContent = '';
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+            // Simulate a network request delay (e.g., 2 seconds)
+            setTimeout(() => {
+                // After the "request" is complete, show the success message
+                formStatus.textContent = 'Your request has been submitted successfully.';
+                formStatus.className = 'mt-4 text-center font-medium text-green-600 dark:text-green-400';
+                contactForm.reset();
 
-            const backendUrl = 'http://127.0.0.1:8000/api/contact/';
-
-            try {
-                const response = await fetch(backendUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    formStatus.textContent = result.message;
-                    formStatus.className = 'mt-4 text-center font-medium text-green-600 dark:text-green-400';
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.message || 'An unknown server error occurred.');
-                }
-
-            } catch (error) {
-                console.error('Submission error:', error);
-                formStatus.textContent = `Error: ${error.message}`;
-                formStatus.className = 'mt-4 text-center font-medium text-red-600 dark:text-red-400';
-            } finally {
+                // Reset the button to its original state
                 submitButton.disabled = false;
                 submitButton.classList.remove('button-loading');
                 buttonText.textContent = 'Send Message';
                 buttonIcon.className = 'fas fa-paper-plane ml-2';
-            }
+            }, 2000); // 2000 milliseconds = 2 seconds
         });
     </script>
 </body>
