@@ -201,7 +201,7 @@
                 
                 </div>
                 <div class="animate-fade-in delay-100 hidden md:block">
-    <div class="relative w-full h-96 flex items-center justify-center">
+<!--     <div class="relative w-full h-96 flex items-center justify-center">
         
         <div class="relative animate-float-reverse">
             <div class="w-80 h-80 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-xl overflow-hidden">
@@ -210,7 +210,33 @@
            
 
         </div>
+    </div> -->
+                    <div class="relative w-full h-96 flex items-center justify-center">
+  <!-- Rotating text circle -->
+  <div class="relative w-80 h-80 flex items-center justify-center">
+    <!-- Center initials or icon -->
+    <div class="absolute w-32 h-32 flex items-center justify-center 
+                bg-gradient-to-br from-primary-500 to-primary-700 
+                text-white text-4xl font-bold rounded-full shadow-lg z-10">
+      DA
     </div>
+
+    <!-- Rotating text -->
+    <div class="absolute w-full h-full flex items-center justify-center animate-spin-slow">
+      <svg viewBox="0 0 300 300" class="w-full h-full">
+        <path id="circlePath"
+          d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"
+          fill="none" />
+        <text fill="currentColor" class="text-primary-600 dark:text-primary-400 font-medium">
+          <textPath href="#circlePath" startOffset="0%">
+            • Python • React • Django • MySQL • API • Problem Solving • JavaScript •
+          </textPath>
+        </text>
+      </svg>
+    </div>
+  </div>
+</div>
+
 </div>
               
 
@@ -729,6 +755,7 @@
     </script>
 </body>
 </html>
+
 
 
 
